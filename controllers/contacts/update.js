@@ -1,11 +1,12 @@
-const Contact = require('../../models/contacts');
+const { Contact } = require('../../models');
+const {HttpError} = require('../../helpers')
 
 const update = async (req, res, next) => {
 
       const { contactId } = req.params;
       const contacts = await Contact.findByIdAndUpdate(contactId, req.body, {new: true});
       if (!contacts) {
-        return res.status(404).json({ message: 'Not found' });
+        throw HttpError(404);
       }
       res.json({data: contacts})
 }
