@@ -1,7 +1,8 @@
-const contacts = require('./contacts')
-const ctrlWrapper = require('./ctrlWrapper')
+const contacts = require('./contacts');
+const auth = require('./auth')
+
 
 module.exports = {
     contacts,
-    ctrlWrapper
+    auth
 }
