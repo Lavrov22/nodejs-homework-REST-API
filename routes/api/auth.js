@@ -4,7 +4,7 @@ const { auth: controllers } = require('../../controllers')
 const { ctrlWrapper } = require('../../helpers');
 const { signUp } = require('../../schemas');
 const { login } = require('../../schemas');
-const { validation, auth } = require('../../middlewares');
+const { validation, auth, upload } = require('../../middlewares');
 
 
 
@@ -16,6 +16,6 @@ router.get('/current', auth, ctrlWrapper(controllers.current));
 
 router.post('/logout', auth, ctrlWrapper(controllers.logout))
 
-
+router.patch('/avatars', auth, upload.single("avatar"), ctrlWrapper(controllers.avatar))
 
 module.exports = router
